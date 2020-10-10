@@ -9,7 +9,7 @@ class Category(models.Model):
         return self.name
 
 
-class Location(models.MOdel):
+class Location(models.Model):
     name = models.CharField(max_length=40)
 
     def __str__(self):
