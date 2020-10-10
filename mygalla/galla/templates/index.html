@@ -1,7 +1,16 @@
 {% extends 'base.html' %} 
 {% block content %}
-
-{% for photos in all_photos %}
-<img src="{{photo.image.url}}" alt="{{photo.name}}" class="img-fluid myimage">
-
-{% endfor %}
+	
+    <div class="container">
+        <h1 class="text-centered">{{ test }}</h1>
+        <hr>
+        {% for image in images %}
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding-top: 20px;">
+            <img src="{{ image.img.url }}"  class="img-responsive" alt="{{image.name}}" ><br>
+            <p>"{{image.description}}"</p>
+            <small class="text-muted">Title: {{image.name}}</small><br>
+            <small class="text-muted">category: {{image.category}}</small>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %} 
