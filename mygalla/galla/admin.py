@@ -3,6 +3,6 @@ from .models import Category,Location,Image
 
 # Register your models here.
 
-admin.register(Category)
-admin.register(Location)
-admin.register(Image)
+admin.site.register(Category)
+admin.site.register(Location)
+admin.site.register(Image)
