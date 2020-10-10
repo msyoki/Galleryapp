@@ -1,0 +1,7 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+{% for photos in all_photos %}
+<img src="{{photo.image.url}}" alt="{{photo.name}}" class="img-fluid myimage">
+
+{% endfor %}
