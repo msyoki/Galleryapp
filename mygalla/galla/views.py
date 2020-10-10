@@ -4,6 +4,6 @@ from .models import Image
 # Create your views here.
 
 def galla(request):
-    all_photos = Image.all_photos()
-    print(all_photos)
-    return render(request, 'index.html',{"all_photos":all_photos})
+    images = Image.get_all_images()
+    test='Gallery'
+    return render(request, 'index.html',{'images': images,'test': test})
