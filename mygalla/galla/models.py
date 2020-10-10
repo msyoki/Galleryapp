@@ -17,11 +17,21 @@ class Location(models.Model):
 
 
 class Image(models.Model):
-    images = models.ImageField(upload_to = 'photos/',null =True)
+    img = models.ImageField(upload_to = 'photos/',null =True)
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=100)
+    description = models.TextField(max_length=400)
     category= models.ForeignKey('Category',on_delete = models.CASCADE, null='True', blank=True)
     location= models.ForeignKey('Location',on_delete = models.CASCADE, null='True', blank=True)
 
+    
+    @classmethod
+    def get_all_images(cls):
+        '''
+          Method to return all the images.
+        '''
+        images = cls.objects.all()
+        return images
+
+    
     def __str__(self):
         return self.name
