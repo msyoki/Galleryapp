@@ -26,6 +26,15 @@ class CategoryTest(TestCase):
         categories = Category.objects.all()
         self.assertTrue(len(categories) > 0)
 
+    def test_update(self):
+        '''
+        test if object can be updated
+        '''
+        self.category.save_category()
+        self.category = Category.objects.filter(name ='Cat').update(name='Cat1')
+        self.updated_category = Category.objects.get(name='Cat1')
+        self.assertEqual(self.updated_category.name,'Cat1')
+
     def test_delete(self):
         '''
         test object can be deleted  from database 
