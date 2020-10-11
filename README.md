@@ -14,13 +14,19 @@ This is a personal gallery application that displays photos for others to see.
 * View photos based on the location they were taken
 
 ## Setup/Installation Requirements
-* Python version 3
-* pip
-* Django
-* Django-bootstrap3
-* Heroku
-* Gunicorn
-* Internet connection
+* asgiref==3.2.10
+* dj-database-url==0.5.0
+* Django==3.1.2
+* django-bootstrap3==14.1.0
+* django-heroku==0.3.1
+* gunicorn==20.0.4
+* Pillow==7.2.0
+* psycopg2==2.8.6
+* python-decouple==3.3
+* pytz==2020.1
+* sqlparse==0.4.1
+* whitenoise==5.2.0
+> All available in the requirements.txt
 
 ## Installation Process
 * Clone the project
