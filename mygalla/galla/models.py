@@ -65,10 +65,24 @@ class Image(models.Model):
     location= models.ForeignKey('Location',on_delete = models.CASCADE, null='True', blank=True)
 
     def save_image(self):
+        '''
+        method to save image in db
+        '''
         self.save()
+    
+    def update_image(self, test):
+        '''
+        method to update image in db
+        '''
+        self.update(name =test)
 
     def delete_image(self):
+        ''''
+        method to delete image in db
+        '''
         self.delete()
+
+
 
     @classmethod
     def get_all_images(cls):
@@ -90,3 +104,4 @@ class Image(models.Model):
     
     def __str__(self):
         return self.name
+

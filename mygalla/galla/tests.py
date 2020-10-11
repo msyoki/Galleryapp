@@ -37,7 +37,7 @@ class CategoryTest(TestCase):
 
     def test_delete(self):
         '''
-        test object can be deleted  from database 
+        test object can be deleted  from db
         '''
         self.category.save_category()
         self.category = Category.objects.get(id = 1)
@@ -62,7 +62,7 @@ class LocationTest(TestCase):
 
     def test_save(self):
         '''
-        test if object is saved in database
+        test if object is saved in  db
         '''
         self.location.save_location()
         locations = Location.objects.all()
@@ -79,7 +79,7 @@ class LocationTest(TestCase):
 
     def test_delete(self):
         '''
-        test object can be deleted  from database 
+        test object can be deleted  from db 
         '''
         self.location.save_location()
         self.location = Location.objects.get(id = 1)
@@ -87,4 +87,65 @@ class LocationTest(TestCase):
         self.assertTrue(len(Location.objects.all())== 0)
 
 
-        
+class ImageTest(TestCase):
+    '''
+    Image class test
+    '''
+    def setUp(self):
+        '''
+        runs before the test
+        ''' 
+        self.category= Category(name='food')
+        self.category.save_category()
+        self.location= Location(name='China')
+        self.location.save_location()
+
+        self.image =Image(id=1,img= 'photos/a.jpeg',
+        name = 'imagetest',
+        description = 'test',
+        category=self.category,
+        location=self.location)
+
+
+    def test_instance(self):
+        '''
+        check object instance of Image class
+        '''
+        self.assertTrue(isinstance(self.image,Image))
+
+    def test_save(self):
+        '''
+        test if object can be saved in the db
+        '''
+        self.image.save_image()
+        self.images=Image.objects.all()
+        self.assertTrue(len(self.images) >0)
+
+
+    def test_update(self):
+       '''
+       test if object can be updated from db
+       '''
+       self.image.save_image()
+       self.image=Image.objects.filter(id=1).update(img='photos/b.jpeg') 
+       self.updated_image=Image.objects.get(id=1)
+       self.assertTrue(self.updated_image.img,'photos/b.jpeg')
+
+    def test_delete(self):
+        '''
+        test if object can be deleted from db
+        '''
+        self.image.save_image()
+        self.searched_image = Image.objects.get(id=1)
+        self.searched_image.delete_image()
+        self.assertTrue(len(Image.objects.all()) == 0)
+
+    def test_search_by_category(self):
+        '''
+        test image filter by category
+        '''
+        self.image.save_image()
+        self.category= Category(name='food')
+        self.category.save_category()
+        self.searched_images=Image.search_by_category('food')
+        self.assertTrue(len(self.searched_images) > 0)
