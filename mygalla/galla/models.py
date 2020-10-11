@@ -5,8 +5,23 @@ from django.db import models
 class Category(models.Model):
     name = models.CharField(max_length=40)
 
+    def save_category(self):
+        '''
+        method to save category
+        '''
+        self.save()
+
+    def delete_category(self):
+        ''''
+        method to delete category 
+        '''
+        self.delete()
+
+
     def __str__(self):
         return self.name
+
+
 
 
 class Location(models.Model):
@@ -23,7 +38,12 @@ class Image(models.Model):
     category= models.ForeignKey('Category',on_delete = models.CASCADE, null='True', blank=True)
     location= models.ForeignKey('Location',on_delete = models.CASCADE, null='True', blank=True)
 
-    
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
     @classmethod
     def get_all_images(cls):
         '''
@@ -35,7 +55,7 @@ class Image(models.Model):
     @classmethod
     def search_by_category(cls,search_term):
         '''
-          Method to search for images based on their category.
+          Method to search for images based on their category. 
         '''
         images = cls.objects.filter(category__name__icontains = search_term)
         
