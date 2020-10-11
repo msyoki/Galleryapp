@@ -1,16 +1,66 @@
 {% extends 'base.html' %} 
 {% block content %}
-	
-    <div class="container" style="padding-bottom: 20px;">
+    <div class="container" style="padding-bottom: 20px;" >
         <h1 class="text-centered">{{ test }}</h1>
         <hr>
         {% for image in images %}
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding-top: 20px;">
-            <img src="{{ image.img.url }}"  class="img-responsive" alt="{{image.name}}" ><br>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
+            <div class="card" >
+                <a id="link" type="button"  data-toggle="modal" data-target="#exampleModalLong{{image.id}}">
+                <img src="{{image.img.url}}"  class="img-responsive" alt="{{image.name}}" style="width:100%" >
+                </a>
+                <div class="container">
+                    <h5 class="text-muted">category: {{image.category}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-lg" id="exampleModalLong{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLongTitle">{{ image.name}}</h2>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{image.img.url}}" class="img-responsive" width="100%">
+                        <h5 >{{image.description}}<h5>
+                        <h5 class="text-muted">category: {{image.category}} </h5>
+                        <a href="{{image.img.url}}" download="{{image.name}}" class="btn btn-success">Download</a><br><br>
+                    
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="padding-top: 20px;">
+            <a href='{{ image.img.url }}' width="500px" height="500px" ><img id="myImg" src="{{ image.img.url }}"  class="img-responsive" alt="{{image.name}}" style="width:100%;max-width:300px" ></a><br>
             <p>"{{image.description}}"</p>
             <small class="text-muted">Title: {{image.name}}</small><br>
             <small class="text-muted">category: {{image.category}}</small>
-        </div>
+        </div> -->
         {% endfor %}
+
+
     </div>
+
 {% endblock %} 
+
+        
+        <!-- <img id="myImg" src='{{ image.img.url }}' class="img-responsive" alt="{{image.name}}" style="width:100%;max-width:300px" type="button" data-toggle="modal" data-target=".bd-example-modal-lg"></a><br> -->
+        <!-- <div class="modal fade bd-example-modal-lg" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <img  src='{{ image.img.url }}' alt="" class="img-responsive" width="100%">
+                <p>"{{image.description}}"</p>
+                <small class="text-muted">Title: {{image.name}}</small><br>
+                <small class="text-muted">category: {{image.category}}</small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+ -->
+
