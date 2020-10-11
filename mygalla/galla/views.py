@@ -17,6 +17,6 @@ def search_category(request):
         return render(request,'category.html',{"message":message, "images":searched_images, "category":search_term})
     
     else:
-        message = "Please search category"
+        message = "You haven't searched for any category"
         
         return render(request, 'category.html', {"message":message})
