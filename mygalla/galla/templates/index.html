@@ -1,7 +1,9 @@
 {% extends 'base.html' %} 
 {% block content %}
     <div class="container" style="padding-bottom: 20px;" >
-        <h1 class="text-centered">{{ test }}</h1>
+        <h1 class="text-center">Wecome to Galla App</h1>
+        <p class="text-center">View,download and share your favourite images from the different categories of images,checkout out the gallery below</p>
+        <h1 >{{ test }}</h1>
         <hr>
         {% for image in images %}
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
@@ -10,7 +12,7 @@
                 <img src="{{image.img.url}}"  class="img-responsive" alt="{{image.name}}" style="width:100%" >
                 </a>
                 <div class="container">
-                    <h5 class="text-muted">category: {{image.category}}</h5>
+                    <h5 >category: {{image.category}}</h5>
                 </div>
             </div>
         </div>
@@ -24,11 +26,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <img src="{{image.img.url}}" class="img-responsive" width="100%">
-                        <h5 >{{image.description}}<h5>
-                        <h5 class="text-muted">category: {{image.category}} </h5>
-                        <a href="{{image.img.url}}" download="{{image.name}}" class="btn btn-success">Download</a><br><br>
-                    
+                        <img src="{{image.img.url}}" class="img-responsive" width="100%"><br>
+                        <a href="{{image.img.url}}" download="{{image.name}}" class="btn btn-success" style="float: right;">Download</a><br>
+                        <h4 style="font-weight: bold;">Description: {{image.description}}<h4>
+                        <h4 >category: {{image.category}} </h4>
+                        <br><br>
                         
                     </div>
                 </div>

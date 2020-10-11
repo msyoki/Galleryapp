@@ -1,17 +1,23 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
 h1{
     color:#05a081;
-    font-weight: bold;
+    font-family: 'Patua One', cursive;
+
 }
 .navbar{
     background-color: #232a34;
-    padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 0rem;
     border-color:#232a34;
+    padding: 10px;
+
 }
 span{
-    font-weight: bold;
     color:#05a081;
+    font-family: 'Patua One', cursive;
+
 }
 i{
     font-weight: bold;
